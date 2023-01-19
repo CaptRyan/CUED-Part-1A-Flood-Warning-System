@@ -13,7 +13,7 @@ def run():
     for i in range(0, 10):
         smallest_ten.append(distance_list[i])
         biggest_ten.append(distance_list[-1-i])
-    print (smallest_ten, "\n", sorted_by_key(biggest_ten, 1, False))
+    print (smallest_ten, sorted_by_key(biggest_ten, 1, False))
 
 if __name__ == "__main__":
     print("*** Task 1B: CUED Part IA Flood Warning System ***")
