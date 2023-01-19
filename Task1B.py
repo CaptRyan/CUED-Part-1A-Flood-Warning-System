@@ -23,7 +23,7 @@ def run():
         biggest_ten.append(distance_list[- 1 - i])
 
     # Display obtained lists
-    print(smallest_ten, sorted_by_key(biggest_ten, 1, False))
+    print(smallest_ten, sorted_by_key(biggest_ten, 1))
 
 
 if __name__ == "__main__":
