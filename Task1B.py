@@ -11,7 +11,7 @@ def run():
     smallest_ten = []
     biggest_ten = []
 
-    # Build list of stations
+    # Build a list of stations
     stations = build_station_list()
 
     # Calculate the distance between the Coordinate p and each station
