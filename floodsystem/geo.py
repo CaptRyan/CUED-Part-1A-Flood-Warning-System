@@ -45,5 +45,40 @@ def stations_within_radius(stations, centre, r):
 
 
 def rivers_with_station(stations):
-    river_station_list = []
-    return river_station_list
+    river_names = []
+    river_list = []
+
+    # Storing all the names of rivers (contains repeating value)
+    for i in stations:
+        river_names.append(i.river)
+
+    # Eliminate repeating river names
+    river_list = set(river_names)
+    river_list = list(river_list)
+
+    # Sort the name of the rivers in alphabetical order
+    river_list.sort()
+
+    return river_list
+
+
+def stations_by_river(stations):
+    # Using pre-constructed function
+    river_list = rivers_with_station(stations)
+    river_station_dictionary = {}
+
+    # Set-up essential data structure for storing information in the later part of the function
+    for i in river_list:
+        river_station_dictionary[i] = []
+
+    # Storing the name of the stations under index(name of river) in the dictionary
+    for i in river_list:
+        for j in stations:
+            if i == j.river:
+                river_station_dictionary[i].append(j.name)
+
+    # Sort the list inside the dictionary which contains names of stations
+    for i in river_station_dictionary.items():
+        i[1].sort()
+
+    return river_station_dictionary
