@@ -19,10 +19,10 @@ def stations_by_distance(stations, p):
     for i in stations:
         coord_s = i.coord
         distance = haversine(coord_s, coord_p)
-        distance_list.append((i.name, distance))
+        distance_list.append((i.name, i.town, distance))
 
     # Sort the list from nearest to furthest distances
-    distance_list = sorted_by_key(distance_list, 1)
+    distance_list = sorted_by_key(distance_list, 2)
 
     return distance_list
 
@@ -35,7 +35,7 @@ def stations_within_radius(stations, centre, r):
     for i in distance_list:
 
         # Finding the distance that is within the given radius, adding the name of the station into the list
-        if i[1] <= r:
+        if i[2] <= r:
             within_radius_list.append(i[0])
 
     # Sort the list of names in alphabetical order
@@ -85,7 +85,7 @@ def stations_by_river(stations):
 
 
 def rivers_by_station_number(stations, N):
-    # Return the N rivers with the greatest number of monitoring stations. 
+    # Return the N rivers with the greatest number of monitoring stations.
     # Will return a tuple (river name, number of stations) depending on the input value of N
 
     number_of_stations = []
