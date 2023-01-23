@@ -19,7 +19,7 @@ def test_stations_by_distance():
     list_stations_by_distance = stations_by_distance(stations, p)
 
     # Verify the result
-    assert (list_stations_by_distance[0][1] - 3522.703867078437) < 0.00001
+    assert (list_stations_by_distance[0][2] - 3522.703867078437) < 0.00001
 
 
 def test_stations_within_radius():
