@@ -89,11 +89,27 @@ def rivers_by_station_number(stations, N):
     # Will return a tuple (river name, number of stations) depending on the input value of N
 
     number_of_stations = []
-
+    top_N_stations = []
+    list_complete = False
+    
     river_dict = stations_by_river(stations)
 
     for i in range(len(list(river_dict.keys()))):
         number_of_stations.append((list(river_dict.keys())[i], len(list(river_dict.items())[i][1])))
         number_of_stations = sorted_by_key(number_of_stations, 1, True)
 
-    return number_of_stations
+    top_N_stations = number_of_stations[:N]
+
+    stations = [tup[1] for tup in number_of_stations]
+    
+    while list_complete == False:
+        if stations[N-1] == stations[N]:
+            top_N_stations.append(number_of_stations[N])
+            N = N+1
+        else:
+            
+            list_complete = True
+    
+
+    return top_N_stations
+    
