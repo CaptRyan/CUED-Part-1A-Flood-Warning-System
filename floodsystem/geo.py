@@ -88,20 +88,24 @@ def rivers_by_station_number(stations, N):
     # Return the N rivers with the greatest number of monitoring stations.
     # Will return a tuple (river name, number of stations) depending on the input value of N
 
+    #Setting up variables for later parts of the function
     number_of_stations = []
     top_N_stations = []
     list_complete = False
     
+    #Create list of ("river name", "number of stations") tupels
     river_dict = stations_by_river(stations)
-
     for i in range(len(list(river_dict.keys()))):
         number_of_stations.append((list(river_dict.keys())[i], len(list(river_dict.items())[i][1])))
         number_of_stations = sorted_by_key(number_of_stations, 1, True)
 
+    #Selects N rivers with the most stations
     top_N_stations = number_of_stations[:N]
 
+    #Creates list containing the number of station on each river in numerical order
     stations = [tup[1] for tup in number_of_stations]
     
+    #Adds rivers to the end of the list if the river has the same number of stations as the Nth river
     while list_complete == False:
         if stations[N-1] == stations[N]:
             top_N_stations.append(number_of_stations[N])
