@@ -1,6 +1,7 @@
 from floodsystem.geo import rivers_by_station_number
 from floodsystem.stationdata import build_station_list
 
+
 def run():
     # Build a list of stations
     stations = build_station_list()
