@@ -46,13 +46,15 @@ class MonitoringStation:
 
 def inconsistent_typical_range_stations(stations):
 
+    # Create empty list to contain inconsistent stations
     list_of_inconsistent_stations = []
 
+    # Add stations name to a list if the station contains inconsistent data
     for i in stations:
         if i.typical_range_consistent() is False:
             list_of_inconsistent_stations.append(i.name)
 
+    # Sort the list of inconsistent stations into alphabetical order
     list_of_inconsistent_stations.sort()
 
     return list_of_inconsistent_stations
-    
