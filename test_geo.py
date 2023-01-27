@@ -49,7 +49,7 @@ def test_rivers_with_station():
 def test_rivers_by_station_number():
     """Test of calling the function"""
 
-    #Construct a list of stations
+    # Construct a list of stations
     stations = build_station_list()
     N = 9
 
