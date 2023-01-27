@@ -39,4 +39,4 @@ def test_typical_range_consistent():
     town = "My Town"
     s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
     
-    assert s.typical_range_consistent is True
+    assert s.typical_range_consistent() is True
