@@ -4,6 +4,7 @@ from floodsystem.geo import stations_by_distance
 from floodsystem.stationdata import build_station_list
 from floodsystem.geo import stations_within_radius
 from floodsystem.geo import rivers_with_station
+from floodsystem.geo import rivers_by_station_number
 
 
 def test_stations_by_distance():
@@ -43,3 +44,13 @@ def test_rivers_with_station():
     stations = build_station_list()
 
     rivers_with_station(stations)
+
+
+def test_rivers_by_station_number():
+    """Test of calling the function"""
+
+    #Construct a list of stations
+    stations = build_station_list()
+    N = 9
+
+    rivers_by_station_number(stations, N)
