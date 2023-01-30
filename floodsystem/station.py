@@ -41,11 +41,12 @@ class MonitoringStation:
 
     def typical_range_consistent(self):
 
-        return (self.typical_range is not None) and (self.typical_range[0] <= self.typical_range[1])
+        return ((self.typical_range is not None) and (self.typical_range[0] is not None or self.typical_range[1]
+                is not None)) and (self.typical_range[0] <= self.typical_range[1])
 
     def relative_water_level(self):
 
-        return (((self.latest_level) / (self.typical_range[1] - self.typical_range[2])) - 1)
+        return (((self.latest_level) / (self.typical_range[0] - self.typical_range[1])) - 1)
 
 
 def inconsistent_typical_range_stations(stations):
