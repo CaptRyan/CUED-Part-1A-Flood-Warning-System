@@ -1,30 +1,18 @@
 from floodsystem.plot import plot_water_levels
 from floodsystem.stationdata import build_station_list
 from floodsystem.stationdata import update_water_levels
-from floodsystem.utils import sorted_by_key
+from floodsystem.flood import stations_highest_rel_level
 
 
 def run():
     # Initialization of variables that are needed afterwards
     stations = build_station_list()
     update_water_levels(stations)
-    stations_relative_water_level = []
 
-    for i in stations:
-        if i.typical_range_consistent():
-            # Ignoring None Type latest_level
-            if i.latest_level is None:
-                pass
-            else:
-                stations_relative_water_level.append((i, i.relative_water_level()))
+    returned_list = stations_highest_rel_level(stations, 5)
 
-    # Sorting stations by their relative water level
-    stations_relative_water_level = sorted_by_key(stations_relative_water_level, 1, True)
-
-    # Obtaining the list that contains the largest five of the relative water level differences
-    largest_relative_level = stations_relative_water_level[0:5]
-    for i in largest_relative_level:
-        plot_water_levels(i[0])
+    for i in returned_list:
+        plot_water_levels(i)
 
 
 if __name__ == "__main__":
