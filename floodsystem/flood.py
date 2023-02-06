@@ -6,10 +6,9 @@ def stations_level_over_threashold(stations, tol):
     stations_over_threashold = []
 
     for i in stations:
-        if i.relative_water_level() is None:
-            pass
-        elif i.relative_water_level() < tol:
-            stations_over_threashold.append(i.name)
+        if (i.latest_level is not None and i.relative_water_level() is not None) and i.relative_water_level() > tol:
+            stations_over_threashold.append((i.name, i.relative_water_level()))
+    return stations_over_threashold
 
 
 def stations_highest_rel_level(stations, N):
@@ -28,5 +27,5 @@ def stations_highest_rel_level(stations, N):
     for i in stations_relative_water_level:
         station_list.append(i[0])
 
-    # Obtaining the list that contains the largest five of the relative water level differences
+    # Obtaining the list that contains the largest N of the relative water level differences
     return station_list[0:N]
