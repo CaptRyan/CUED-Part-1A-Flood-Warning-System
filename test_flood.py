@@ -24,7 +24,7 @@ def test_station_level_over_threashold():
     trange = (1, 3)
     river = "River X"
     town = "My Town"
-    latest_level = 10
-    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town, latest_level)
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+    s.latest_level = 10
 
     assert 4.4 < s.relative_water_level() < 4.6
