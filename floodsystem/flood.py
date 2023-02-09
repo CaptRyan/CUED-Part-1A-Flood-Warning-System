@@ -3,8 +3,10 @@ from floodsystem.utils import sorted_by_key
 
 def stations_level_over_threashold(stations, tol):
 
+    # Creates empty list to hold station name and relative water level data
     stations_over_threashold = []
 
+    # Adds station and relative level to list if the relative level is over a given tolerance
     for i in stations:
         if (i.latest_level is not None and i.relative_water_level() is not None) and i.relative_water_level() > tol:
             stations_over_threashold.append((i.name, i.relative_water_level()))

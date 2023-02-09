@@ -5,9 +5,11 @@ from floodsystem.utils import sorted_by_key
 
 
 def run():
+    # Build list of stations
     stations = build_station_list()
     update_water_levels(stations)
 
+    # Returns stations with relative level over given tolerance value
     return_list = stations_level_over_threashold(stations, 0.8)
     return_list = sorted_by_key(return_list, 1, True)
 
