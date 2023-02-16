@@ -12,6 +12,7 @@ def run():
     towns_with_risk = []
 
     # Test if relative water level is above threashold, and return risk of flooding
+    # If multiple stations in one town have a relative level over threashold, will the town be returned twice? Need to implement a check if the town is already in list before appending.
     for i in stations:
         if (i.typical_range_consistent() is True) and (i.relative_water_level() is not None):
             if i.relative_water_level() > 1.5:
