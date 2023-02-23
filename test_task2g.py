@@ -50,23 +50,23 @@ def test_Task2G():
             if i.relative_water_level() > 1.5:
                 towns_with_risk[town] = "Severe"
             elif i.relative_water_level() > 1.3:
-                if towns_with_risk[town].values() == "Severe":
+                if towns_with_risk[town] == "Severe":
                     towns_with_risk[town] = "Severe"
                 else:
                     towns_with_risk[town] = "High"
             elif i.relative_water_level() > 1.1:
-                if towns_with_risk[town].values() == "Severe":
+                if towns_with_risk[town] == "Severe":
                     towns_with_risk[town] = "Severe"
-                elif towns_with_risk[town].values() == "High":
+                elif towns_with_risk[town] == "High":
                     towns_with_risk[town] = "High"
                 else:
                     towns_with_risk[town] = "Moderate"
             elif i.relative_water_level() > 1:
-                if towns_with_risk[town].values() == "Severe":
+                if towns_with_risk[town] == "Severe":
                     towns_with_risk[town] = "Severe"
-                elif towns_with_risk[town].values() == "High":
+                elif towns_with_risk[town] == "High":
                     towns_with_risk[town] = "High"
-                elif towns_with_risk[town].values() == "Moderate":
+                elif towns_with_risk[town] == "Moderate":
                     towns_with_risk[town] = "Moderate"
                 else:
                     towns_with_risk[town] = "Low"
