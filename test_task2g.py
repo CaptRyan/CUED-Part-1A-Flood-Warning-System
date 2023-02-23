@@ -1,12 +1,38 @@
-from floodsystem.stationdata import build_station_list
-from floodsystem.stationdata import update_water_levels
+from floodsystem.stationdata import MonitoringStation
 
 
-def run():
+def test_Task2G():
+    """Test of returning correct flood risk for town with two stations"""
+
+    def create_test_stations():
+        # Create a station
+        s_id = "test-s-id"
+        m_id = "test-m-id"
+        label = "some station"
+        coord = (-2.0, 4.0)
+        trange = (1, 3)
+        river = "River X"
+        town = "My Town"
+        s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+        s.latest_level = 3.1
+
+        # Create another station
+        s_id = "test-s-id"
+        m_id = "test-m-id"
+        label = "some station 2"
+        coord = (-2.0, 4.0)
+        trange = (1, 3)
+        river = "River X"
+        town = "My Town"
+        t = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+        t.latest_level = 8
+
+        created_stations = {s, t}
+
+        return created_stations
 
     # Build station list
-    stations = build_station_list()
-    update_water_levels(stations)
+    stations = create_test_stations()
 
     def add_to_dict(town):
 
@@ -55,9 +81,4 @@ def run():
             add_to_dict(i.town)
 
     # towns_with_risk.sort()
-    return towns_with_risk
-
-
-if __name__ == "__main__":
-    print("*** Task 2G: CUED Part IA Flood Warning System ***")
-    print(run())
+    assert towns_with_risk == {'My Town': 'Severe'}
